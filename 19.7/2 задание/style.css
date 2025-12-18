@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #e9ecef;
+  color: #222;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ИСПРАВЛЕННЫЙ КЛАСС - выравниваем карточки по центру */
+.delivery-list {
+  display: flex;
+  flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+  justify-content: center; /* Выравниваем по центру */
+  gap: 24px;
+}
+
+.delivery-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  min-width: 280px;
+  max-width: 320px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  border: 2px solid transparent;
+  text-align: center; 
+}
+
+.delivery-label {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 2px;
+  font-weight: 400;
+}
+
+.delivery-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  word-wrap: break-word;
+}
+
+.delivery-edit-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #4b6fff;
+  background-color: #ffffff;
+  color: #4b6fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.delivery-edit-btn:hover {
+  background-color: #4b6fff; 
+  color: #ffffff;            
+}
+
+.delivery-card--delivery {
+  border-color: transparent;
+}
+
+.delivery-card--delivered {
+  border-color: #1b8b3a;
+}
+
+.delivery-card--canceled {
+  border-color: transparent;
+  background-color: #f2f2f2;
+  opacity: 0.6;
+}
+
+.edit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-modal-overlay--visible {
+  display: flex;
+}
+
+.edit-modal {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px 24px 20px;
+  max-width: 340px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.edit-modal-title {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+.edit-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.edit-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.edit-modal-submit {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #2f6bff;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.total-wrapper {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.total-btn {
+  padding: 12px 32px;
+  border-radius: 999px;
+  border: none;
+  background: #2f6bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.total-text {
+  margin-top: 12px;
+  font-size: 24px;
+  font-weight: 700;
+}

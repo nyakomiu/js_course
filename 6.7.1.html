@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров</title>
+</head>
+<body>
+
+    <h1>Список товаров</h1>
+    <ul class="products">
+    </ul>
+
+    <script>
+        const products = ["Мышка", "Клавиатура", "Наушники"];
+        products.push("Монитор", "Принтер", "Флешка");
+        const productListElement = document.querySelector('.products');
+        products.forEach(function(product) {
+            const newItem = document.createElement('li');
+            newItem.textContent = product;
+            productListElement.appendChild(newItem);
+        });
+    </script>
+
+</body>
+</html> 

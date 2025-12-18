@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Динамический список</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        ul {
+            margin: 0 0 15px 0; 
+            padding-left: 20px;
+        }
+
+        .buttons-row {
+            display: flex;
+            gap: 10px; 
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>  
+    <ul id="list">
+    </ul>
+    <div class="buttons-row">
+        <button id="add-btn">Добавить элемент</button>
+        <button id="del-btn">Удалить элемент</button>
+    </div>
+
+    <script>
+        const addButton = document.getElementById('add-btn');
+        const deleteButton = document.getElementById('del-btn');
+        const list = document.getElementById('list');
+        addButton.addEventListener('click', function() {
+            const newElement = document.createElement('li');
+            newElement.textContent = 'Новый элемент списка';
+            list.appendChild(newElement);
+        });
+
+        deleteButton.addEventListener('click', function() {
+            const lastElement = list.lastElementChild;
+            if (lastElement) {
+                list.removeChild(lastElement);
+            }
+        });
+    </script>
+
+</body>
+</html>

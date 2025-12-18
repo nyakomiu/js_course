@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style15.css">
+</head>
+<body>
+    <div id="error-message" class="message error-message"></div>
+    <div id="success-message" class="message success-message"></div>
+
+    <form id="film-form" class="card form-card">
+        <label for="title">Название:</label>
+        <input type="text" id="title" name="title">
+
+        <label for="genre">Жанр:</label>
+        <input type="text" id="genre" name="genre">
+
+        <label for="releaseYear">Год:</label>
+        <input type="number" id="releaseYear" name="releaseYear">
+
+        <div class="checkbox-wrapper">
+            <input type="checkbox" id="isWatched" name="isWatched">
+            <label for="isWatched">Успели посмотреть?</label>
+        </div>
+
+        <input type="submit" value="Submit" class="btn-submit">
+    </form>
+
+    <div class="filters-row">
+        <div class="card filter-card">
+            <input type="text" id="filter-title" placeholder="Название фильма">
+            <input type="text" id="filter-genre" placeholder="Жанр">
+            <input type="number" id="filter-year" placeholder="Год релиза">
+            <select id="filter-watched">
+                <option value="">Все</option>
+                <option value="true">Да</option>
+                <option value="false">Нет</option>
+            </select>
+        </div>
+
+        <button id="delete-all" class="btn-delete-all">Удалить всё</button>
+    </div>
+
+    <table id="film-table" class="card table-card">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Год</th>
+                <th>Успели посмотреть?</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="film-tbody"></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>

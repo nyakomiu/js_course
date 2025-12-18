@@ -1,0 +1,236 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Более современный шрифт */
+    margin: 0;
+    background-color: #eef2f5; /* Светло-серый фон как на GIF */
+    color: #333;
+}
+
+#app {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px 30px; /* Увеличены отступы внутри контейнера */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Более выраженная тень */
+    min-height: 500px;
+}
+
+h1 {
+    color: #333;
+    border-bottom: 1px solid #e0e0e0; /* Светлее линия под заголовком */
+    padding-bottom: 15px; /* Отступ от линии */
+    margin-bottom: 25px; /* Отступ от следующего элемента */
+    font-size: 28px; /* Немного крупнее */
+}
+
+.button {
+    background-color: #28a745; /* Зеленая кнопка как на GIF */
+    color: white;
+    padding: 12px 20px; /* Увеличены отступы */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+    background-color: #218838; /* Темнее при наведении */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.button.red {
+    background-color: #dc3545;
+}
+
+.button.red:hover {
+    background-color: #c82333;
+}
+
+/* Стили прелоадера */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #eef2f5; /* Цвет фона прелоадера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.preloader.hidden {
+    display: none;
+}
+
+.spinner {
+    border: 4px solid rgba(40, 167, 69, 0.2); /* Цвет спиннера - бледный зеленый */
+    border-left-color: #28a745; /* Цвет спиннера - основной зеленый */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Стили таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px; /* Отступ от кнопки "Добавить запись" */
+    border-radius: 8px; /* Скругленные углы таблицы */
+    overflow: hidden; /* Важно для применения border-radius */
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05); /* Легкая тень для таблицы */
+}
+
+th, td {
+    border: 1px solid #e0e0e0; /* Светлее границы */
+    padding: 12px 15px; /* Увеличенные отступы */
+    text-align: left;
+}
+
+th {
+    background-color: #f8f8f8; /* Светлый фон заголовков */
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    color: #555; /* Немного темнее текст заголовка */
+}
+
+th:hover {
+    background-color: #f0f0f0;
+}
+
+th .sort-icon {
+    display: inline-block;
+    width: 1em; /* Чтобы иконка не "прыгала" */
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 5px;
+    font-size: 0.8em;
+    opacity: 0.6; /* Немного прозрачнее */
+}
+
+th.asc .sort-icon::after { content: '▲'; }
+th.desc .sort-icon::after { content: '▼'; }
+
+tr:nth-child(even) {
+    background-color: #fcfcfc; /* Очень светлые полосы */
+}
+tr:hover {
+    background-color: #f5f5f5; /* Подсветка строки при наведении */
+}
+
+/* Стили форм */
+#add-item-form {
+    padding: 20px 0; /* Внутренние отступы, т.к. фон уже у #app */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Увеличен отступ между группами полей */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* Отступ между лейблом и полем */
+    font-weight: 600; /* Жирный шрифт лейбла */
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px; /* Увеличенный паддинг для полей */
+    border: 1px solid #d0d0d0; /* Более четкая граница */
+    border-radius: 4px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Внутренняя тень */
+}
+
+.form-group input:focus {
+    border-color: #007bff; /* Подсветка при фокусе */
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.form-group .error-message {
+    color: #dc3545;
+    font-size: 0.85em; /* Немного меньше */
+    margin-top: 5px;
+}
+
+.form-actions {
+    margin-top: 30px; /* Отступ перед кнопкой добавления */
+}
+
+.header-actions {
+    margin-bottom: 20px;
+}
+
+.no-data {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+/* Для лучшей видимости кнопки "Отмена" в форме */
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.form-actions .button {
+    flex: 1;
+}
+
+.warehouse-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.warehouse-table th,
+.warehouse-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.warehouse-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.warehouse-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.warehouse-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.no-data {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+}

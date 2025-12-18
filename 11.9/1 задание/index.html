@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма опроса</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Форма опроса</h1>
+
+    <form id="survey-form" novalidate>
+        <!-- Имя -->
+        <div class="form-group">
+            <label for="name">Имя пользователя:</label>
+            <input type="text" id="name" name="name" placeholder="Введите ваше имя">
+            <span class="error-message" id="name-error">Пожалуйста, введите имя.</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com">
+            <span class="error-message" id="email-error">Введите корректный Email.</span>
+        </div>
+
+        <!-- Пол -->
+        <div class="form-group radio-group">
+            <label>Пол:</label>
+            <input type="radio" id="male" name="gender" value="Мужской" checked>
+            <label for="male">Мужской</label>
+            
+            <input type="radio" id="female" name="gender" value="Женский">
+            <label for="female">Женский</label>
+        </div>
+
+        <!-- Оценка сервиса -->
+        <div class="form-group rating-row">
+            <label for="rating">Оценка сервиса:</label>
+            <input type="range" id="rating" name="rating" min="1" max="10" value="5">
+        </div>
+
+        <!-- Интересы -->
+        <div class="form-group checkbox-group">
+            <label>Интересы пользователя:</label>
+            <div>
+                <input type="checkbox" id="sport" name="interests" value="Спорт">
+                <label for="sport">Спорт</label>
+            </div>
+            <div>
+                <input type="checkbox" id="music" name="interests" value="Музыка">
+                <label for="music">Музыка</label>
+            </div>
+            <div>
+                <input type="checkbox" id="travel" name="interests" value="Путешествия">
+                <label for="travel">Путешествия</label>
+            </div>
+            <div>
+                <input type="checkbox" id="cinema" name="interests" value="Кино">
+                <label for="cinema">Кино</label>
+            </div>
+        </div>
+
+        <!-- Комментарии -->
+        <div class="form-group">
+            <label for="comments">Дополнительные комментарии:</label>
+            <textarea id="comments" name="comments"></textarea>
+        </div>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <!-- Блок для вывода результатов -->
+    <div id="result-container">
+        <h2>Результаты опроса:</h2>
+        <p><strong>Имя:</strong> <span id="res-name"></span></p>
+        <p><strong>Email:</strong> <span id="res-email"></span></p>
+        <p><strong>Пол:</strong> <span id="res-gender"></span></p>
+        <p><strong>Оценка:</strong> <span id="res-rating"></span></p>
+        <p><strong>Интересы:</strong> <span id="res-interests"></span></p>
+        <p><strong>Комментарий:</strong> <span id="res-comments"></span></p>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Промокоды</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #dce1e5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 380px;
+        }
+        .form {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+        .input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            color: #333;
+            transition: all 0.3s;
+        }
+        .input:focus {
+            border-color: #5c9aff;
+        }
+        .input.valid {
+            color: #008000;
+        }
+        .btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #357abd;
+        }
+        .msg {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #008000;
+        }
+        .msg.show {
+            display: block;
+        }
+        .hint {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <form id="form" class="form">
+            <input type="text" id="input" class="input" placeholder="ПРОМОКОД">
+            <button type="submit" class="btn">ОК</button>
+        </form>
+        <div id="msg" class="msg"></div>
+        <div class="hint">Доступные: PROM10, PROM50, GIFT</div>
+    </div>
+
+    <script>
+        const promos = [
+            {code: 'PROM10', gift: "Скидка 10%"},
+            {code: 'PROM50', gift: "Скидка 50%"},
+            {code: 'GIFT', gift: "Подарок в корзине"}
+        ];
+
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const msg = document.getElementById('msg');
+
+        function getCookies() {
+            const obj = {};
+            document.cookie.split(';').forEach(pair => {
+                const [k, v] = pair.trim().split('=');
+                if(k && v) obj[k] = v;
+            });
+            return obj;
+        }
+
+        function showSuccess(gift) {
+            input.classList.add('valid');
+            msg.textContent = `Промокод применён. ${gift}`;
+            msg.classList.add('show');
+        }
+
+        function resetForm() {
+            input.classList.remove('valid');
+            msg.classList.remove('show');
+        }
+
+        function checkSaved() {
+            const cookies = getCookies();
+            if(cookies.savedCode) {
+                const saved = promos.find(p => p.code === cookies.savedCode);
+                if(saved) {
+                    input.value = saved.code;
+                    showSuccess(saved.gift);
+                }
+            }
+        }
+
+        function saveCookie(code) {
+            document.cookie = `savedCode=${code}; max-age=3600; path=/`;
+        }
+
+        checkSaved();
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const code = input.value.trim().toUpperCase();
+            
+            const found = promos.find(p => p.code === code);
+            if(found) {
+                showSuccess(found.gift);
+                saveCookie(found.code);
+            } else {
+                resetForm();
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фильмотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Карточка с формой -->
+    <div class="card">
+        <form id="filmForm">
+            <div class="form-group">
+                <label for="title">Название:</label>
+                <!-- Убрали placeholder с примером текста -->
+                <input type="text" id="title" class="input-field">
+            </div>
+
+            <div class="form-group">
+                <label for="genre">Жанр:</label>
+                <input type="text" id="genre" class="input-field">
+            </div>
+
+            <div class="form-group">
+                <label for="year">Год:</label>
+                <input type="number" id="year" class="input-field">
+            </div>
+
+            <!-- Блок чекбокса -->
+            <div class="form-group checkbox-wrapper">
+                <input type="checkbox" id="isWatched">
+                <label for="isWatched" class="checkbox-label">Успели посмотреть?</label>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" id="submitBtn" class="btn">Добавить</button>
+                <button type="button" id="cancelEditBtn" class="btn btn-cancel hidden">Отменить редактирование</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Сортировка -->
+    <div class="sort-section">
+        <select id="sortSelect" class="sort-select">
+            <option value="title">Название</option>
+            <option value="genre">Жанр</option>
+            <option value="year">Год</option>
+        </select>
+        <button id="sortBtn" class="btn btn-sort">Сортировать</button>
+    </div>
+
+    <!-- Таблица -->
+    <table id="filmsTable" class="films-table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Год</th>
+                <th>Успели посмотреть?</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS заполнит это -->
+        </tbody>
+    </table>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

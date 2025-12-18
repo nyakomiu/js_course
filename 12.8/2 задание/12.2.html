@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Промокод</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #dce1e5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 380px;
+        }
+
+        .form {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .input:focus {
+            border-color: #5c9aff;
+        }
+
+        .input.valid {
+            color: #008000;
+        }
+
+        .btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #357abd;
+        }
+
+        .msg {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #008000;
+        }
+
+        .msg.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <form id="form" class="form">
+            <input type="text" id="input" class="input" placeholder="ПРОМОКОД">
+            <button type="submit" class="btn">ОК</button>
+        </form>
+        <div id="msg" class="msg"></div>
+    </div>
+
+    <script>
+        const promo = {
+            code: "PROM50",
+            gift: "Скидка 50%"
+        };
+
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const msg = document.getElementById('msg');
+
+        function getCookie() {
+            const cookies = {};
+            document.cookie.split(';').forEach(item => {
+                const [k, v] = item.trim().split('=');
+                if(k && v) cookies[k] = v;
+            });
+            return cookies;
+        }
+
+        function activate() {
+            input.classList.add('valid');
+            msg.textContent = `Промокод применён. ${promo.gift}`;
+            msg.classList.add('show');
+        }
+
+        function reset() {
+            input.classList.remove('valid');
+            msg.classList.remove('show');
+        }
+
+        const cookies = getCookie();
+        if(cookies.promo === promo.code) {
+            input.value = promo.code;
+            activate();
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userCode = input.value.trim().toUpperCase();
+            
+            if(userCode === promo.code) {
+                activate();
+                document.cookie = `promo=${promo.code}; max-age=3600; path=/`;
+            } else {
+                reset();
+            }
+        });
+    </script>
+</body>
+</html>
